@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>34th Graduation | Kampala International University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --kiu-green: #00B83f;
+      --kiu-green-dark: #004d26;
+      --kiu-green-light: #e8f5ee;
+      --kiu-gold: #f4b400;
+      --kiu-gold-hover: #d99f00;
+      --text-dark: #111827;
+      --text-muted: #4b5563;
+      --bg-light: #f8fafc;
+      --border-color: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-dark);
+      background-color: var(--bg-light);
+      line-height: 1.6;
+    }
+
+    /* Top Utility Bar */
+    .top-bar {
+      background: var(--kiu-green-dark);
+      color: #ffffff;
+      font-size: 0.78rem;
+      padding: 0.45rem 5%;
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+    }
+
+    .top-bar a {
+      color: #e5e7eb;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .top-bar a:hover {
+      color: var(--kiu-gold);
+    }
+
+    /* Main Navbar */
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.9rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--kiu-green);
+    }
+
+    .brand-logo {
+      display: block;
+      width: clamp(140px, 17vw, 180px);
+      height: clamp(54px, 6vw, 62px);
+      object-fit: cover;
+      object-position: center 47%;
+    }
+
+    .navbar nav {
+      position: relative;
+    }
+
+    .nav-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--kiu-green-dark);
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      margin: 4px 0;
+      background: currentColor;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--kiu-green);
+      font-weight: 600;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--kiu-green-dark) 0%, var(--kiu-green) 70%, #0a7e43 100%);
+      color: #ffffff;
+      padding: 4rem 5% 5.5rem;
+      position: relative;
+    }
+
+    .hero-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      margin-bottom: 1rem;
+    }
+
+    .breadcrumb a {
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-gold {
+      background: var(--kiu-gold);
+      color: #111827;
+    }
+
+    .badge-status {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.6vw, 2.85rem);
+      font-weight: 800;
+      line-height: 1.18;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero p {
+      max-width: 680px;
+      color: #e2e8f0;
+      font-size: 1.02rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.15s, background-color 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--kiu-gold);
+      color: #111827;
+    }
+
+    .btn-primary:hover {
+      background: var(--kiu-gold-hover);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1140px;
+      margin: -2.8rem auto 4rem;
+      padding: 0 5%;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.4rem 1.5rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--kiu-green);
+    }
+
+    .stat-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Search & Quick Filter Card */
+    .search-panel {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.6rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+      margin-bottom: 2.2rem;
+    }
+
+    .search-panel h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .search-panel p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 240px;
+      padding: 0.78rem 1rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: var(--kiu-green);
+      box-shadow: 0 0 0 3px rgba(0, 102, 51, 0.12);
+    }
+
+    .btn-green {
+      background: var(--kiu-green);
+      color: #ffffff;
+    }
+
+    .btn-green:hover {
+      background: var(--kiu-green-dark);
+    }
+
+    /* Two Column Info Cards */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.7rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      color: var(--kiu-green-dark);
+      margin-bottom: 1rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--kiu-green-light);
+    }
+
+    .detail-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .detail-list li {
+      font-size: 0.93rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .detail-list strong {
+      color: var(--text-dark);
+      font-weight: 600;
+    }
+
+    .detail-list span {
+      color: var(--text-muted);
+    }
+
+    .notice-box {
+      margin-top: 1.2rem;
+      background: #fffbeb;
+      border-left: 4px solid var(--kiu-gold);
+      padding: 0.9rem 1rem;
+      border-radius: 6px;
+      font-size: 0.86rem;
+      color: #78350f;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 3rem 5% 2rem;
+      font-size: 0.88rem;
+    }
+
+    .footer-grid {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    footer h4 {
+      color: #ffffff;
+      margin-bottom: 0.8rem;
+      font-size: 0.98rem;
+    }
+
+    footer p {
+      margin-bottom: 0.45rem;
+      color: #94a3b8;
+    }
+
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 1.4rem auto 0;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .navbar {
+        padding: 0.65rem 5%;
+      }
+
+      .brand-logo {
+        width: clamp(125px, 42vw, 170px);
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links.is-open {
+        position: absolute;
+        top: calc(100% + 0.8rem);
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        width: min(250px, calc(100vw - 2rem));
+        padding: 0.5rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background: #ffffff;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+      }
+
+      .nav-links.is-open a {
+        display: block;
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <a href="#">University Policies</a>
+    <a href="#">KIU Teaching Hospital</a>
+    <a href="#">Giraffe Times</a>
+    <a href="#">Student Portal</a>
+    <a href="#">Staff Directory</a>
+    <a href="#">Contact Us</a>
+  </div>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <a href="index.html" class="brand" aria-label="Kampala International University home">
+      <img src="e29c5efeccb36570f47a2c29acc9a90acdd429a6-kampala-1d3a06dd833a037c4bb2a9836cc5dcfc3297f6df.jpg" class="brand-logo" alt="Kampala International University — Exploring the Heights" />
+    </a>
+    <nav aria-label="Main navigation">
+      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="primary-navigation">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Study at KIU</a></li>
+        <li><a href="#">Academics</a></li>
+        <li><a href="graduation-list.html" class="active">Graduation</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="breadcrumb">
+        <a href="#">Home</a> / <a href="#">Graduation</a> / 34th Graduation
+      </div>
+      <div class="badge-row">
+        <span class="badge badge-gold">Saturday, November 21, 2026</span>
+        <span class="badge badge-status">Graduation Book: Closed</span>
+      </div>
+      <h1>34th Graduation Ceremony</h1>
+      <p>
+        Official graduation register, clearance summary, and academic document collection guidelines
+        for Kampala International University (Western Campus, Ishaka – Bushenyi).
+      </p>
+      <div class="hero-actions">
+        <a href="graduation-list.html" class="btn btn-primary">Search Graduation List</a>
+        <a href="#collection-guidelines" class="btn btn-outline">Transcript &amp; Certificate Info</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Stats Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Cleared Records</div>
+        <div class="stat-value">3,758</div>
+        <div class="stat-sub">Verified 34th Graduation cohort</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Main Campus</div>
+        <div class="stat-value">3,551</div>
+        <div class="stat-sub">Kansanga, Kampala</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Western Campus</div>
+        <div class="stat-value">207</div>
+        <div class="stat-sub">Ishaka – Bushenyi (Host Venue)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Ceremony Date</div>
+        <div class="stat-value" style="font-size: 1.35rem; padding-top: 0.3rem;">Nov 21, 2026</div>
+        <div class="stat-sub">Western Campus, Ishaka</div>
+      </div>
+    </div>
+
+    <!-- Search Panel -->
+    <section class="search-panel" id="search-register">
+      <h2>Search the 34th Graduation Register</h2>
+      <p>Search by partial name, registration number, or programme keyword in any order.</p>
+      <form class="search-form" onsubmit="handleSearch(event)">
+        <input
+          type="text"
+          id="searchQuery"
+          class="search-input"
+          placeholder="e.g., Amanya, 2022-08-12345, or Bachelor of Medicine..."
+          required
+        />
+        <button type="submit" class="btn btn-green">Search List</button>
+      </form>
+      <p id="searchFeedback" style="margin-top: 0.75rem; margin-bottom: 0; font-size: 0.85rem; color: var(--kiu-green); display: none;"></p>
+    </section>
+
+    <!-- Ceremony & Collection Details -->
+    <section class="info-grid" id="collection-guidelines">
+      <div class="card">
+        <h3>Ceremony Information</h3>
+        <ul class="detail-list">
+          <li>
+            <strong>Ceremony Date</strong>
+            <span>Saturday, November 21, 2026</span>
+          </li>
+          <li>
+            <strong>Host Venue</strong>
+            <span>Kampala International University — Western Campus, Ishaka – Bushenyi</span>
+          </li>
+          <li>
+            <strong>Graduation Book Status</strong>
+            <span>Closed (3,758 Cleared Records)</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Transcript &amp; Certificate Collection</h3>
+        <ul class="detail-list">
+          <li>
+            <strong>1. KIU Student ID Card (Compulsory)</strong>
+            <span>Must be presented at the academic registrar's collection desk.</span>
+          </li>
+          <li>
+            <strong>2. National ID or International Passport</strong>
+            <span>Either valid government-issued identification document is accepted.</span>
+          </li>
+        </ul>
+        <div class="notice-box">
+          <strong>Important Notice:</strong> Proxy collection is strictly not permitted unless supported by a verified power of attorney.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h4>Main Campus</h4>
+        <p>P.O. Box 20000, Ggaba Road</p>
+        <p>Kansanga, Kampala, Uganda</p>
+      </div>
+      <div>
+        <h4>Western Campus</h4>
+        <p>Ishaka, Bushenyi</p>
+        <p>Western Region, Uganda</p>
+      </div>
+      <div>
+        <h4>Contact Information</h4>
+        <p>Phone: +256 760 502660 / +256 700 100808</p>
+        <p>Email: admin@kiu.ac.ug</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Kampala International University. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.nav-toggle');
+    const primaryNavigation = document.getElementById('primary-navigation');
+
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+      menuToggle.setAttribute('aria-label', isExpanded ? 'Open navigation menu' : 'Close navigation menu');
+      primaryNavigation.classList.toggle('is-open', !isExpanded);
+    });
+
+    primaryNavigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation menu');
+        primaryNavigation.classList.remove('is-open');
+      }
+    });
+
+    function handleSearch(e) {
+      e.preventDefault();
+      const q = document.getElementById('searchQuery').value.trim();
+      if (q) {
+        window.location.href = `graduation-list.html?q=${encodeURIComponent(q)}`;
+      }
+    }
+  </script>
+
+</body>
+</html>
